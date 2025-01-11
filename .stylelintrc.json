@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-tailwindcss"
+  ],
+  "plugins": [
+    "stylelint-plugin-postcss"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.{jsx,tsx}"],
+      "customSyntax": "postcss-html",
+      "rules": {
+        "tailwindcss/classnames-order": "warn",
+        "tailwindcss/no-custom-classname": true
+      }
+    }
+  ]
+}
