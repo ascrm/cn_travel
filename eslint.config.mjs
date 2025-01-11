@@ -11,6 +11,16 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      // 禁用 require 导入规则
+      "@typescript-eslint/no-require-imports": "off",
+      //表示 ESLint 不会再检查 TypeScript 代码中是否有未使用的变量，也不会对此发出警告或错误。
+      "@typescript-eslint/no-unused-vars": "off",
+      //表示 ESLint 不会再警告或报错关于使用 `any` 类型的代码。
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
