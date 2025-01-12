@@ -1,20 +1,24 @@
 import { Button } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import React from "react";
 
-const buttonSx = {
-  color: "black",
-  display: "flex",
-  justifyContent: "space-between",
-};
-
-export default function UserInfoItem({ content }: { content: string }) {
+export default function UserInfoItem({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   return (
     <Button
-      sx={{ ...buttonSx }}
+      sx={{
+        color: "black",
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px 10px",
+      }}
       size={"large"}
       className={"w-[100%] cursor-pointer hover:bg-[rgba(200,200,200,0.5)]"}
     >
-      {content}
+      <div className={"flex-center-box"}>{children}</div>
       <ArrowForwardIosIcon fontSize={"small"}></ArrowForwardIosIcon>
     </Button>
   );

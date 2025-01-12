@@ -1,6 +1,8 @@
 "use client";
 
 import UserAvatar from "@/components/header-navbar/user-avatar";
+import { Button } from "@mui/material";
+import HeaderItem from "@/components/header-navbar/header-item";
 
 export default function headerNavbar() {
   return (
@@ -13,9 +15,10 @@ export default function headerNavbar() {
       </div>
       <div className={"flex-center-box h-full"}>
         <UserAvatar></UserAvatar>
-        <div>旅行计划</div>
-        <div className={"mx-[40px]"}>我的预定</div>
-        <div>历史记录</div>
+        <HeaderItem>旅行计划</HeaderItem>
+        <HeaderItem>团购服务</HeaderItem>
+        <HeaderItem>会员中心</HeaderItem>
+        <HeaderItem>历史记录</HeaderItem>
       </div>
     </div>
   );
