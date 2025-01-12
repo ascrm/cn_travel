@@ -1,18 +1,20 @@
 "use client";
 
 import UserAvatar from "@/components/header-navbar/user-avatar";
-import { Button } from "@mui/material";
 import HeaderItem from "@/components/header-navbar/header-item";
+import Search from "@/components/header-navbar/search";
+import Image from "next/image";
 
 export default function headerNavbar() {
   return (
-    <div className={"h-[70px] flex-between-box px-[10%]"}>
+    <div className={"h-[70px] flex justify-around items-center "}>
       <div className={"flex-center-box h-full"}>
-        <img className={"h-[1.8em]"} src="/logo.svg" alt="" />
+        <Image src="/logo.svg" alt="" width={40} height={40} />
         <div className={"text-[2em] ml-[5px] font-comfortaa font-[1000]"}>
           CN Travel
         </div>
       </div>
+      <Search></Search>
       <div className={"flex-center-box h-full"}>
         <UserAvatar></UserAvatar>
         <HeaderItem>旅行计划</HeaderItem>
