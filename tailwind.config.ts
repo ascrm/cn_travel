@@ -1,5 +1,3 @@
-import type { Config } from "tailwindcss";
-
 export default {
   darkMode: ["class"],
   content: [
@@ -9,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        comfortaa: ["Comfortaa", "sans-serif"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -58,5 +59,27 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".transition-cartoon": {
+          transition: "all 0.3s ease-out",
+        },
+        ".transition-cartoon-slow": {
+          transition: "all 0.8s ease-out",
+        },
+        ".flex-between-box": {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        },
+        ".flex-center-box": {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+      });
+    },
+  ],
+};

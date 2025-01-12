@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div></div>;
+import Index from "../../components/header-navbar";
+
+export default function Page() {
+  return <Index></Index>;
 }

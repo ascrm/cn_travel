@@ -1,11 +1,5 @@
-import "./globals.css";
+import "../styles/globals.scss";
 import React from "react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "CN Travel",
-  description: "Created with Next.js",
-};
 
 export default function RootLayout({
   children,
@@ -13,7 +7,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh">
+    <html lang="en">
+      <head>
+        {/* 引入 Comfortaa 字体 */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap"
+        />
+        <title>CN Travel</title>
+      </head>
       <body>{children}</body>
     </html>
   );
