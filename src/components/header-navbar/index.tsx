@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/header-navbar/user-avatar";
 
 export default function headerNavbar() {
@@ -14,11 +13,9 @@ export default function headerNavbar() {
       </div>
       <div className={"flex-center-box h-full"}>
         <UserAvatar></UserAvatar>
-        <Button variant="ghost">旅行计划</Button>
-        <Button variant="ghost" className={"mx-[40px]"}>
-          我的预定
-        </Button>
-        <Button variant="ghost">历史记录</Button>
+        <div>旅行计划</div>
+        <div className={"mx-[40px]"}>我的预定</div>
+        <div>历史记录</div>
       </div>
     </div>
   );

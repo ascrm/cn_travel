@@ -5,7 +5,7 @@ export default function UserInfo() {
       <div className={"text-center text-[0.8em] text-gray-500"}>
         @2339621373@qq.com
       </div>
-      <div className={"user-info-item"}>我的账户</div>
+
       <div className={"user-info-item"}>我的订单</div>
       <div className={"user-info-item"}>我的预定</div>
       <div className={"user-info-item"}>退出登录</div>
