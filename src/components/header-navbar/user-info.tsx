@@ -1,16 +1,16 @@
-import UserInfoItem from "@/components/header-navbar/user-info-item";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+/** @format */
+
+import UserInfoItem from '@/components/header-navbar/user-info-item'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 
 export default function UserInfo() {
   return (
-    <div className="absolute opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 p-[10px] transition-cartoon rounded-lg top-[60px] left-[50%] ml-[-20px] translate-x-[-50%] w-[300px] border-solid border-2">
-      <div className={"text-[2em] font-bold mt-[60px] text-center"}>ascrm</div>
-      <div className={"text-center text-[0.8em] mb-[10px] text-gray-500"}>
-        @2339621373@qq.com
-      </div>
+    <div className="pointer-events-none absolute left-[50%] top-[60px] ml-[-20px] w-[300px] translate-x-[-50%] rounded-lg border-2 border-solid p-[10px] opacity-0 transition-cartoon group-hover:pointer-events-auto group-hover:opacity-100">
+      <div className={'mt-[60px] text-center text-[2em] font-bold'}>ascrm</div>
+      <div className={'mb-[10px] text-center text-[0.8em] text-gray-500'}>@2339621373@qq.com</div>
       <UserInfoItem>
         <PersonOutlineOutlinedIcon></PersonOutlineOutlinedIcon>个人中心
       </UserInfoItem>
@@ -24,5 +24,5 @@ export default function UserInfo() {
         <LogoutOutlinedIcon></LogoutOutlinedIcon>退出登录
       </UserInfoItem>
     </div>
-  );
+  )
 }

@@ -1,14 +1,12 @@
-import React from "react";
-import { Button } from "@mui/material";
+/** @format */
 
-export default function HeaderItem({
-  children,
-}: {
-  children?: React.ReactNode;
-}) {
+import React from 'react'
+import { Button } from '@mui/material'
+
+export default function HeaderItem({ children }: { children?: React.ReactNode }) {
   return (
-    <Button sx={{ marginLeft: "20px" }} color={"inherit"} size={"large"}>
+    <Button sx={{ marginLeft: '20px' }} color={'inherit'} size={'large'}>
       {children}
     </Button>
-  );
+  )
 }
