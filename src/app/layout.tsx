@@ -1,6 +1,6 @@
 /** @format */
 
-import '../styles/globals.scss'
+import '../styles/globals.css'
 import React from 'react'
 
 export default function RootLayout({
@@ -11,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* 引入 Comfortaa 字体 */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" />
         <title>CN Travel</title>
       </head>
