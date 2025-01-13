@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function LeadingChannel() {
   return (
     <div className={'mx-auto mb-[200px] w-[60%]'}>
-      <div className={'mb-[50px] text-center text-[2.5em]'}>只需 4 步简单，即可开启您的 Eurail 冒险之旅</div>
+      <div className={'mb-[50px] text-center text-[2.5em]'}>只需 4 步简单，即可开启您的 China 冒险之旅</div>
       <div className={'grid grid-cols-1 gap-14 lg:grid-cols-2'}>
         <LeadingItem
           className={'bg-amber-200 hover:bg-amber-300'}
@@ -25,7 +25,7 @@ export default function LeadingChannel() {
           title={'查找您的车票'}
           step={'探索通行证'}
         >
-          使用全球通票或单国通票旅行 - 由您决定。
+          使用全国通票通票旅行 - 由您决定。
         </LeadingItem>
         <LeadingItem
           className={'bg-green-200 hover:bg-green-300'}
@@ -45,7 +45,7 @@ export default function LeadingChannel() {
           title={'激活您的通票'}
           step={'了解方法'}
         >
-          hello world
+          将您的通票添加到应用程序，激活它，然后乘坐火车！
         </LeadingItem>
       </div>
     </div>
