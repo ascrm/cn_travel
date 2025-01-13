@@ -15,6 +15,7 @@ export default function headerNavbar() {
         </div>
       </div>
       <Search></Search>
+      <div className="bg-blue-500 text-white p-4 rounded-lg">Hello, World!</div>
       <div className={"flex-center-box h-full"}>
         <UserAvatar></UserAvatar>
         <HeaderItem>旅行计划</HeaderItem>
