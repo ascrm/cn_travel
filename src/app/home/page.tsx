@@ -1,12 +1,5 @@
 import HeaderNavbar from "../../components/header-navbar";
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  Input,
-  InputLabel,
-  TextField,
-} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 export default function Page() {
   return (
@@ -14,7 +7,7 @@ export default function Page() {
       <HeaderNavbar></HeaderNavbar>
       <div
         className={
-          "relative bg-[url('/carousel4.jpg')] h-[650px] bg-cover bg-center  bg-black bg-opacity-30 bg-blend-multiply"
+          "relative bg-[url('/carousel4.jpg')] h-[650px] bg-cover bg-center bg-black bg-opacity-30 bg-blend-multiply"
         }
       >
         <div
