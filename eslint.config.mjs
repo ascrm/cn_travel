@@ -21,6 +21,8 @@ const eslintConfig = [
       '@typescript-eslint/no-unused-vars': 'off',
       //表示 ESLint 不会再警告或报错关于使用 `any` 类型的代码。
       '@typescript-eslint/no-explicit-any': 'off',
+      // 关闭 no-img-element 规则
+      '@next/next/no-img-element': 'off',
     },
   },
 ]

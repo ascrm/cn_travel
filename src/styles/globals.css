@@ -4,8 +4,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --anmimation-duration: 40s;
+  --anmimation-count: 6;
+  --anmimation-space: -1;
+}
+
 @layer utilities {
-  .transform-scale-top {
-    transform-origin: top;
+  .duration-transform{
+    transition-duration: 100s;
+  }
+
+  .duration-transform2{
+    transition-duration: 10s;
+  }
+
+
+  @keyframes scroll-right {
+    to {
+      right: -500px;
+    }
+  }
+
+  .card-item{
+    animation: scroll-right var(--anmimation-duration) linear infinite;
+  }
+
+  .card-item1{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 1 ) * var(--anmimation-space));
+  }
+  .card-item2{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 2 ) * var(--anmimation-space));
+  }
+  .card-item3{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 3 ) * var(--anmimation-space));
+  }
+  .card-item4{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 4 ) * var(--anmimation-space));
+  }
+  .card-item5{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 5 ) * var(--anmimation-space));
+  }
+  .card-item6{
+    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 6 ) * var(--anmimation-space));
   }
 }
