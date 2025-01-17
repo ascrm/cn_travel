@@ -1,8 +1,8 @@
 /** @format */
 
-import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import React from 'react'
+import { Button } from '@mui/material'
 
 interface CardItemProps {
   children?: React.ReactNode
@@ -13,15 +13,32 @@ interface CardItemProps {
 
 export default function CardItem({ children, image, title, className }: CardItemProps) {
   return (
-    <div
-      className={cn(
-        'card-item absolute right-[100%] w-[300px] cursor-pointer rounded-lg shadow-md group-hover:[animation-play-state:paused]',
-        className,
-      )}
-    >
-      <Image className={'aspect-[10/7] rounded-t-lg object-cover object-center'} src={image} alt="" width={500} height={350} />
-      <div className={'p-[10px] text-center text-[1.2em] font-bold'}>{title}</div>
-      {children}
+    <div>
+      <div
+        className={cn(
+          'card-item group/item absolute right-[100%] w-[300px] cursor-pointer rounded-lg shadow-md group-hover:[animation-play-state:paused]',
+          className,
+        )}
+      >
+        <div
+          style={{ backgroundImage: `url(${image})` }}
+          className={'relative h-[200px] w-[100%] rounded-t-lg bg-cover bg-center transition-cartoon-slow'}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(closest-side,rgba(0,0,0,0.4),rgba(0,0,0,0.8))] opacity-0 transition-opacity group-hover/item:opacity-50"></div>
+
+          <Button
+            sx={{ backgroundColor: 'white', color: 'black', borderRadius: '20px', transition: 'all 0.3s ease-in-out' }}
+            variant="contained"
+            className={
+              'absolute left-[50%] top-[50%] z-10 translate-x-[-50%] translate-y-[50%] opacity-0 group-hover/item:translate-y-0 group-hover/item:opacity-100'
+            }
+          >
+            查看详情
+          </Button>
+        </div>
+        <div className={'p-[10px] text-center text-[1.2em] font-bold'}>{title}</div>
+        {children}
+      </div>
     </div>
   )
 }

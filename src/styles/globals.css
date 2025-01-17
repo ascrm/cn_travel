@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root{
-  --anmimation-duration: 40s;
+  --anmimation-duration: 50s;
   --anmimation-count: 6;
   --anmimation-space: -1;
 }
@@ -47,5 +47,9 @@
   }
   .card-item6{
     animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 6 ) * var(--anmimation-space));
+  }
+
+  .mask-right{
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
   }
 }
