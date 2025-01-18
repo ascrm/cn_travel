@@ -14,38 +14,8 @@
     }
   }
 
-  @keyframes scroll-right-slow{
-    to {
-      transform: translateX(1000px);
-    }
-  }
-
-  /* 定义 hover 时的动画 */
-  @keyframes hover-animation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   .card-item{
     animation: scroll-right 5s linear infinite;
 
-  }
-
-  .card-item-slow{
-    transform: translateX(1000px);
-    transition-property: transform;
-    transition-duration: 10s;
-    transition-timing-function: linear;
-    &:hover{
-      background-color: aqua;
-      transform: translateX(800px);
-      transition-property: transform;
-
-      transition-duration: 50s;
-    }
   }
 }
