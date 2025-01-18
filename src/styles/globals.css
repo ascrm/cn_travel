@@ -8,14 +8,13 @@
 
 @layer utilities {
 
-  @keyframes scroll-right {
+  @keyframes card-scroll {
     to {
-      transform: translateX(1000px);
+      transform: translateX(-50%);
     }
   }
 
-  .card-item{
-    animation: scroll-right 5s linear infinite;
-
+  .card-scroll-track{
+    animation: card-scroll 10s linear infinite var(--direction,forwards);
   }
 }
