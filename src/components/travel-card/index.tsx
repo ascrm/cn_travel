@@ -44,58 +44,54 @@ export default function TravelCard() {
   const scrollItems = () => {
     if (isScrolling) return
 
+    console.log('数据')
+
     const scrollContent = scrollContentRef.current!
     const items = Array.from(scrollContent.getElementsByClassName('item')) as HTMLElement[]
 
-    const firstItemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(scrollContent).gap)
-    console.log('数据：', firstItemWidth)
+    const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(scrollContent).gap)
     setIsScrolling(true)
-    scrollContent.style.transform = `translateX(-${firstItemWidth}px)`
+    scrollContent.style.transform = `translateX(-${4 * itemWidth}px)`
 
     // 在过渡结束时回调
     const onTransitionEnd = () => {
       // 将第一个项目移到最后，恢复初始位置
-      scrollContent.appendChild(items[0])
+      items.forEach(item => {
+        scrollContent.appendChild(item)
+      })
       scrollContent.style.transition = 'none'
       scrollContent.style.transform = 'translateX(0)'
 
       // 确保样式生效后再移除无过渡设置
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          scrollContent.style.transition = 'transform 2s linear'
+          scrollContent.style.transition = 'transform 10s linear'
           setIsScrolling(false)
         })
       })
-
-      // 设置定时器重复调用此函数以创建循环效果
-      setTimeoutId(setTimeout(scrollItems, 20000)) // 每2秒滚动一次
     }
 
     scrollContent.addEventListener('transitionend', onTransitionEnd, { once: true })
   }
 
   useEffect(() => {
+    console.log('进来了吗')
     // 启动自动滚动
     scrollItems()
-
-    // 清理定时器
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-    }
   }, [isScrolling])
 
   // 添加鼠标悬停事件监听器
   const handleMouseEnter = () => {
-    if (timeoutId) clearTimeout(timeoutId)
+    // if (timeoutId) clearTimeout(timeoutId)
   }
 
   const handleMouseLeave = () => {
-    setTimeoutId(setTimeout(scrollItems, 2000))
+    // setTimeoutId(setTimeout(scrollItems, 2000))
   }
 
   return (
     <div className="overflow-hidden" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div ref={scrollContentRef} className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:2s]'}>
+      <div ref={scrollContentRef} className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:10s]'}>
         {cards.map(item => (
           <CardItem className="item" key={item.id} image={item.image} title={item.title}></CardItem>
         ))}
