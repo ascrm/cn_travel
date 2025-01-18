@@ -6,8 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+:root {
+  --direction: forwards;
+}
 
+@layer utilities {
   @keyframes card-scroll {
     to {
       transform: translateX(-50%);
