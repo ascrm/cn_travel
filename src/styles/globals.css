@@ -1,55 +1,51 @@
 /** @format */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --anmimation-duration: 50s;
-  --anmimation-count: 6;
-  --anmimation-space: -1;
-}
-
 @layer utilities {
-  .duration-transform{
-    transition-duration: 100s;
-  }
-
-  .duration-transform2{
-    transition-duration: 10s;
-  }
-
 
   @keyframes scroll-right {
     to {
-      right: -500px;
+      transform: translateX(1000px);
+    }
+  }
+
+  @keyframes scroll-right-slow{
+    to {
+      transform: translateX(1000px);
+    }
+  }
+
+  /* 定义 hover 时的动画 */
+  @keyframes hover-animation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 
   .card-item{
-    animation: scroll-right var(--anmimation-duration) linear infinite;
+    animation: scroll-right 5s linear infinite;
+
   }
 
-  .card-item1{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 1 ) * var(--anmimation-space));
-  }
-  .card-item2{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 2 ) * var(--anmimation-space));
-  }
-  .card-item3{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 3 ) * var(--anmimation-space));
-  }
-  .card-item4{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 4 ) * var(--anmimation-space));
-  }
-  .card-item5{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 5 ) * var(--anmimation-space));
-  }
-  .card-item6{
-    animation-delay: calc(var(--anmimation-duration) / var(--anmimation-count) * ( var(--anmimation-count) - 6 ) * var(--anmimation-space));
-  }
+  .card-item-slow{
+    transform: translateX(1000px);
+    transition-property: transform;
+    transition-duration: 10s;
+    transition-timing-function: linear;
+    &:hover{
+      background-color: aqua;
+      transform: translateX(800px);
+      transition-property: transform;
 
-  .mask-right{
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+      transition-duration: 50s;
+    }
   }
 }

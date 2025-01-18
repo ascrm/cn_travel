@@ -6,6 +6,7 @@ import UserAvatar from '@/components/header-navbar/user-avatar'
 import HeaderItem from '@/components/header-navbar/header-item'
 import Search from '@/components/header-navbar/search'
 import Image from 'next/image'
+import { Badge } from '@mui/material'
 
 export default function headerNavbar() {
   return (
@@ -18,7 +19,10 @@ export default function headerNavbar() {
       <div className={'h-full flex-center-box'}>
         <UserAvatar></UserAvatar>
         <HeaderItem>旅行计划</HeaderItem>
-        <HeaderItem>团购服务</HeaderItem>
+        <Badge badgeContent={4} max={99} color="primary">
+          <HeaderItem>团购服务</HeaderItem>
+        </Badge>
+
         <HeaderItem>会员中心</HeaderItem>
         <HeaderItem>历史记录</HeaderItem>
       </div>
