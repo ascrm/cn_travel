@@ -2,7 +2,7 @@
 'use client'
 
 import CardItem from '@/components/travel-card/card-item'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // export default function TravelCard() {
 //   const cards = [
@@ -38,13 +38,11 @@ export default function TravelCard() {
   ]
   const scrollContentRef = useRef<HTMLDivElement | null>(null)
   const [isScrolling, setIsScrolling] = useState<boolean>(false)
-  const [timeoutId, setTimeoutId] = useState<number | null>(null)
+  const isTransitionPrevented = false // 标志位，控制是否阻止事件
 
   // 启动滚动
   const scrollItems = () => {
     if (isScrolling) return
-
-    console.log('数据')
 
     const scrollContent = scrollContentRef.current!
     const items = Array.from(scrollContent.getElementsByClassName('item')) as HTMLElement[]
@@ -55,43 +53,75 @@ export default function TravelCard() {
 
     // 在过渡结束时回调
     const onTransitionEnd = () => {
+      if (isTransitionPrevented) return
+
       // 将第一个项目移到最后，恢复初始位置
       items.forEach(item => {
         scrollContent.appendChild(item)
       })
       scrollContent.style.transition = 'none'
-      scrollContent.style.transform = 'translateX(0)'
+      scrollContent.style.transform = `translateX(-${4 * itemWidth}px)`
 
+      console.log('transform已经更改')
       // 确保样式生效后再移除无过渡设置
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          scrollContent.style.transition = 'transform 10s linear'
+          scrollContent.style.transition = 'all 20s linear'
           setIsScrolling(false)
         })
       })
     }
 
+    console.log('鼠标悬空 isTransitionPrevented：', isTransitionPrevented)
     scrollContent.addEventListener('transitionend', onTransitionEnd, { once: true })
   }
 
   useEffect(() => {
-    console.log('进来了吗')
     // 启动自动滚动
     scrollItems()
   }, [isScrolling])
 
-  // 添加鼠标悬停事件监听器
-  const handleMouseEnter = () => {
-    // if (timeoutId) clearTimeout(timeoutId)
+  // 处理鼠标悬停和离开事件
+  const handleMouseEnter = (event: React.MouseEvent) => {
+    const htmlTarget = event.target
+    const currentHtml = event.currentTarget as HTMLElement
+
+    // 设置新的 transform 值，保留 translateX，添加 translateY
+    const test = currentHtml.style.transform
+    // 检查是否包含 translateY
+    if (!test.includes('translateY')) {
+      // 如果不包含 translateY，则添加 translateY(0)
+      currentHtml.style.transform += 'translateY(1px)'
+      console.log('hhh1:', currentHtml.style.transform)
+    } else {
+      // 如果已经包含 translateY，则不做任何操作
+      currentHtml.style.transform = currentHtml.style.transform.replace(/translateY\(\d+px\)/, 'translateY(1px)')
+      console.log('hhh2:', currentHtml.style.transform)
+    }
+    currentHtml.style.background = 'red'
+    currentHtml.style.transitionDuration = '5s' // 设置过渡时长为 20 秒
   }
 
-  const handleMouseLeave = () => {
-    // setTimeoutId(setTimeout(scrollItems, 2000))
+  const handleMouseLeave = (event: React.MouseEvent) => {
+    const htmlTarget = event.target
+    const currentHtml = event.currentTarget as HTMLElement
+
+    // 使用正则表达式替换 translateY 的值
+    const updatedString = currentHtml.style.transform.replace(/translateY\(\d+px\)/, 'translateY(0)')
+    console.log('hhh3:', updatedString)
+    currentHtml.style.transform = updatedString
+    currentHtml.style.background = 'white'
+    currentHtml.style.transitionDuration = '20s' // 设置过渡时长为 20 秒
   }
 
   return (
-    <div className="overflow-hidden" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div ref={scrollContentRef} className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:10s]'}>
+    <div className="overflow-hidden">
+      <div
+        ref={scrollContentRef}
+        onMouseEnter={event => handleMouseEnter(event)}
+        onMouseLeave={event => handleMouseLeave(event)}
+        className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:20s]'}
+      >
         {cards.map(item => (
           <CardItem className="item" key={item.id} image={item.image} title={item.title}></CardItem>
         ))}
