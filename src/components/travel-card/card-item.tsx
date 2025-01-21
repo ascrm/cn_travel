@@ -5,6 +5,7 @@ import { BillIcon, DateIcon, LocationIcon } from '@/components/icon'
 import CardInfoItem from '@/components/travel-card/card-info-item'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 interface CardItemProps {
   children?: React.ReactNode
@@ -22,13 +23,17 @@ interface CardItemProps {
 export default function CardItem({ cardItem, className }: CardItemProps) {
   return (
     <div>
-      <div
-        className={cn('group relative aspect-[4/3] w-[400px] cursor-pointer rounded-t-lg bg-cover bg-center', className)}
-        style={{ backgroundImage: `url(${cardItem.image})` }}
-      >
+      <div className={'group relative aspect-[4/3] w-[400px]'}>
+        <Image
+          className={'absolute cursor-pointer rounded-t-lg transition-cartoon group-hover:brightness-75'}
+          src={cardItem.image}
+          layout={'fill'}
+          alt={'R'}
+        ></Image>
         <Button
+          variant={'link'}
           className={
-            'absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-10%] opacity-0 transition-cartoon group-hover:translate-y-[-50%] group-hover:opacity-100'
+            'absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-10%] bg-white opacity-0 transition-cartoon group-hover:translate-y-[-50%] group-hover:opacity-100'
           }
         >
           探索更多
