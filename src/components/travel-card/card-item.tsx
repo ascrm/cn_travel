@@ -12,10 +12,11 @@ interface CardItemProps {
 
 export default function CardItem({ children, image, title, className }: CardItemProps) {
   return (
-    <div className={cn('cursor-pointer rounded-lg bg-red-400 shadow-md', className)}>
-      <div style={{ backgroundImage: `url(${image})` }} className={'aspect-[4/3] w-[400px]'}>
-        {title}
-      </div>
+    <div
+      className={cn('aspect-[4/3] w-[400px] cursor-pointer rounded-lg bg-red-400 shadow-md', className)}
+      style={{ backgroundImage: `url(${image})` }}
+    >
+      {title}
     </div>
   )
 }

@@ -18,6 +18,9 @@
   }
 
   .card-scroll-track{
-    animation: card-scroll 10s linear infinite var(--direction,forwards);
+    animation: card-scroll 30s linear infinite var(--direction,forwards);
+    &:hover{
+      animation-play-state: paused;
+    }
   }
 }
