@@ -5,22 +5,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --direction: forwards;
-}
-
-@layer utilities {
-  @keyframes card-scroll {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .card-scroll-track{
-    animation: card-scroll 30s linear infinite var(--direction,forwards);
-    &:hover{
-      animation-play-state: paused;
-    }
-  }
-}

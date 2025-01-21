@@ -1,5 +1,8 @@
 /** @format */
+'use client'
+
 import CardItem from '@/components/travel-card/card-item'
+import { useEffect, useState } from 'react'
 
 const cards = [
   { id: 1, title: '巴黎', image: '/1.jpg' },
@@ -9,11 +12,41 @@ const cards = [
 ]
 
 export default function TravelCard() {
+  const [transformX, setTransformX] = useState(0)
+  const [isHovered, setIsHovered] = useState(false) // 控制 hover 状态
+
+  useEffect(() => {
+    let animationFrameId
+    const updatePosition = () => {
+      setTransformX(prev => {
+        const nextValue = prev - (isHovered ? 0.16 : 0.64) // 根据 hover 状态调整速度
+        if (nextValue <= -window.innerWidth) {
+          return 0
+        }
+        return nextValue
+      })
+
+      // 在下一个动画帧继续执行
+      animationFrameId = requestAnimationFrame(updatePosition)
+    }
+
+    // 启动动画
+    updatePosition()
+
+    // 清理动画帧
+    return () => cancelAnimationFrame(animationFrameId)
+  }, [isHovered])
+
   return (
     <div>
       <div className={'mb-[50px] text-center text-[2.5em]'}>选择您最爱的旅游景点</div>
       <div className={'overflow-hidden'}>
-        <div className={'card-scroll-track flex w-max gap-10 pl-10'}>
+        <div
+          onMouseEnter={() => setIsHovered(true)} // 当鼠标进入时，设置 hover 状态
+          onMouseLeave={() => setIsHovered(false)} // 当鼠标离开时，恢复正常状态
+          style={{ transform: `matrix(1, 0, 0, 1, ${transformX}, 0)` }}
+          className={'flex w-max gap-10 pl-10 will-change-transform'}
+        >
           {cards.map(item => (
             <CardItem key={item.id} image={item.image} title={item.title}></CardItem>
           ))}

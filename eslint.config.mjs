@@ -23,6 +23,8 @@ const eslintConfig = [
       '@typescript-eslint/no-explicit-any': 'off',
       // 关闭 no-img-element 规则
       '@next/next/no-img-element': 'off',
+      "react-hooks/exhaustive-deps": "off" // 禁用此规则
+
     },
   },
 ]
