@@ -56,17 +56,15 @@ export default function TravelCard() {
     // 在过度结束时回调
     const onTransitionEnd = () => {
       // 将第一个项目移到最后，恢复初始位置
-      items.forEach(item => {
-        scrollContent.appendChild(item)
-      })
+      items.forEach(item => scrollContent.appendChild(item))
       scrollContent.style.transition = 'none'
-      scrollContent.style.transform = `translateX(-${4 * itemWidth}px)`
+      scrollContent.style.transform = 'translateX(0)'
 
       console.log('监听之间之后')
       // 确保样式生效后再移除无过度设置
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          scrollContent.style.transition = 'all 20s linear'
+          scrollContent.style.transition = 'all 10s linear'
           setIsScrolling(false)
         })
       })
@@ -87,37 +85,35 @@ export default function TravelCard() {
 
     // 设置新的 transform 值，保留 translateX，添加 translateY
     const test = currentHtml.style.transform
-    // 检查是否包含 translateY
+    // 如果不包含 translateY，则添加 translateY
     if (!test.includes('translateY')) {
-      // 如果不包含 translateY，则添加 translateY
       currentHtml.style.transform += 'translateY(1px)'
-      console.log('hhh1:', currentHtml.style.transform)
-    } else {
-      // 如果已经包含 translateY，则需要修改translateY的值
-      currentHtml.style.transform = currentHtml.style.transform.replace(/translateY\(\d+px\)/, 'translateY(1px)')
-      console.log('hhh2:', currentHtml.style.transform)
     }
+    console.log('hhh1:', currentHtml.style.transform)
     currentHtml.style.background = 'red'
-    currentHtml.style.transitionDuration = '5s' // 设置过度时长为 20 秒
+    currentHtml.style.transitionDuration = '5s'
   }
 
   const handleMouseLeave = (event: React.MouseEvent) => {
     const currentHtml = event.currentTarget as HTMLElement
 
-    // 使用正则表达式替换 translateY 的值
-    currentHtml.style.transform = currentHtml.style.transform.replace(/translateY\(\d+px\)/, 'translateY(0)')
-    console.log('hhh3:', currentHtml.style.transform)
+    const test2 = currentHtml.style.transform
+    // 如果包含 translateY，则移除它
+    if (test2.includes('translateY')) {
+      currentHtml.style.transform = currentHtml.style.transform.replace(/translateY\(\d+px\)/, '')
+    }
+    console.log('hhh2:', currentHtml.style.transform)
     currentHtml.style.background = 'white'
-    currentHtml.style.transitionDuration = '20s' // 设置过度时长为 20 秒
+    currentHtml.style.transitionDuration = '10s'
   }
 
   return (
     <div className="overflow-hidden">
       <div
         ref={scrollContentRef}
-        // onMouseEnter={event => handleMouseEnter(event)}
-        // onMouseLeave={event => handleMouseLeave(event)}
-        className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:20s]'}
+        onMouseEnter={event => handleMouseEnter(event)}
+        onMouseLeave={event => handleMouseLeave(event)}
+        className={'scroll-content flex gap-10 transition-all ease-linear [transition-duration:10s]'}
       >
         {cards.map(item => (
           <CardItem className="item" key={item.id} image={item.image} title={item.title}></CardItem>
