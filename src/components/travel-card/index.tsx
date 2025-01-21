@@ -4,11 +4,33 @@
 import CardItem from '@/components/travel-card/card-item'
 import { useEffect, useRef, useState } from 'react'
 
-const cards = [
-  { id: 1, title: '巴黎', image: '/1.jpg' },
-  { id: 2, title: '东京', image: '/2.jpg' },
-  { id: 3, title: '纽约', image: '/3.jpg' },
-  { id: 4, title: '悉尼', image: '/4.jpg' },
+interface CardProps {
+  id: number
+  image: string
+  title: string
+  location: string
+  time: string
+  ticket: string
+}
+const cards: CardProps[] = [
+  {
+    id: 1,
+    title: '乘船穿越基克拉泽斯群岛',
+    image: '/1.jpg',
+    location: '锡罗斯岛、帕罗斯岛、纳克索斯岛及其他地区',
+    time: '2周或更长时间',
+    ticket: 'Eurail 希腊群岛通票',
+  },
+  { id: 2, title: '追逐北极光', image: '/2.jpg', location: '汉堡、斯德哥尔摩、基律纳等', time: '2周或更长时间', ticket: '欧洲铁路全球通票' },
+  {
+    id: 3,
+    title: '斯洛文尼亚和克罗地亚',
+    image: '/3.jpg',
+    location: '卢布尔雅那、布莱德湖、斯普利特及其他地区',
+    time: '2周或更长时间',
+    ticket: '欧洲铁路全球通票',
+  },
+  { id: 4, title: '罗马周边', image: '/4.jpg', location: '布拉恰诺、维泰博、伊索拉法尔内塞等', time: '2周或更长时间', ticket: 'Eurail 意大利通票' },
 ]
 
 export default function TravelCard() {
@@ -50,10 +72,10 @@ export default function TravelCard() {
           className={'flex w-max gap-10 pl-10 will-change-transform'}
         >
           {cards.map(item => (
-            <CardItem key={item.id} image={item.image} title={item.title}></CardItem>
+            <CardItem key={item.id} cardItem={item}></CardItem>
           ))}
           {cards.map(item => (
-            <CardItem aria-hidden={true} key={item.id} image={item.image} title={item.title}></CardItem>
+            <CardItem aria-hidden={true} key={item.id} cardItem={item}></CardItem>
           ))}
         </div>
       </div>
