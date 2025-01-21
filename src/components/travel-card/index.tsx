@@ -17,7 +17,7 @@ export default function TravelCard() {
   const scrollTrackRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    let animationFrameId
+    let animationFrameId: any
     const updatePosition = () => {
       setTransformX(prev => {
         const nextValue = prev - (isHovered ? 0.16 : 0.64) // 根据 hover 状态调整速度
