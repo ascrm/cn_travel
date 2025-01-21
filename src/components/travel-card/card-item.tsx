@@ -39,7 +39,7 @@ export default function CardItem({ cardItem, className }: CardItemProps) {
           探索更多
         </Button>
       </div>
-      <div className={'cursor-default'}>
+      <div className={'cursor-default rounded-b-lg shadow-md'}>
         <div className={'p-[0.5em] text-[1.5rem] text-gray-900'}>{cardItem.title}</div>
         <CardInfoItem icon={<LocationIcon></LocationIcon>}>{cardItem.location}</CardInfoItem>
         <CardInfoItem icon={<DateIcon></DateIcon>}>{cardItem.time}</CardInfoItem>

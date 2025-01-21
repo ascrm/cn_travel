@@ -69,7 +69,7 @@ export default function TravelCard() {
           onMouseEnter={() => setIsHovered(true)} // 当鼠标进入时，设置 hover 状态
           onMouseLeave={() => setIsHovered(false)} // 当鼠标离开时，恢复正常状态
           style={{ transform: `matrix(1, 0, 0, 1, ${transformX}, 0)` }}
-          className={'flex w-max gap-10 pl-10 will-change-transform'}
+          className={'flex w-max gap-10 pb-[3px] pl-10 will-change-transform'}
         >
           {cards.map(item => (
             <CardItem key={item.id} cardItem={item}></CardItem>
