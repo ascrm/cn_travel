@@ -31,7 +31,10 @@ export default function FooterSection() {
         </div>
         <div className={'flex items-center'}>
           {icons.map((item, index) => (
-            <div key={index} className={'relative mx-[10px] h-[48px] w-[48px] rounded-[50%] border-2 border-solid border-gray-100'}>
+            <div
+              key={index}
+              className={'hover:shake relative mx-[10px] h-[48px] w-[48px] cursor-pointer rounded-[50%] border-2 border-solid border-gray-100'}
+            >
               {item.icon}
             </div>
           ))}

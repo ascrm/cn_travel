@@ -22,7 +22,7 @@ export default function LeadingItem({ className, image, index, indexClass, title
         <div className={'text-[1.5em]'}>{title}</div>
       </div>
       <div className={'p-[20px] text-gray-600'}> {children}</div>
-      <div>{step}</div>
+      <div className={'underline-transition'}>{step}</div>
     </div>
   )
 }
