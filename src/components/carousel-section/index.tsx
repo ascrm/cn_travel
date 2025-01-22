@@ -4,9 +4,9 @@
 import '@splidejs/splide/dist/css/splide.min.css'
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import CarouselSectionItem from '@/components/carousel-section/carousel-section-item'
-import Autoplay from 'embla-carousel-autoplay'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 const carouselItems = [
   {
@@ -34,20 +34,20 @@ const carouselItems = [
 ]
 
 export default function CarouselSection() {
-  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }))
-  const [activeIndex, setActiveIndex] = useState<number>(1)
+  // const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }))
+  const [activeIndex, setActiveIndex] = useState<number>(0)
   const [api, setApi] = useState<CarouselApi>()
+  const [canScrollPrev, setCanScrollPrev] = React.useState(false)
+  const [canScrollNext, setCanScrollNext] = React.useState(false)
+
+  const scrollTo = (index: number) => {
+    setActiveIndex(index)
+    api?.scrollTo(index)
+  }
 
   return (
     <div className={'my-[200px] bg-orange-50 py-[5em]'}>
-      <Carousel
-        onMouseEnter={() => (plugin.current.options.stopOnMouseEnter = true)}
-        onMouseLeave={() => (plugin.current.options.stopOnMouseEnter = false)}
-        plugins={[plugin.current]}
-        setApi={setApi}
-        opts={{ loop: true }}
-        className="mx-auto w-[70%]"
-      >
+      <Carousel setApi={setApi} opts={{ loop: true }} className="mx-auto w-[70%]">
         <CarouselContent>
           {carouselItems.map((item, index) => (
             <CarouselItem key={index} className="w-full">
@@ -55,16 +55,25 @@ export default function CarouselSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className={'left-[-50px] h-[50px] w-[50px]'} />
-        <CarouselNext className={'right-[-50px] h-[50px] w-[50px]'} />
+        <CarouselPrevious
+          onClick={() => {
+            setActiveIndex(prevState => (prevState == 0 ? carouselItems.length - 1 : prevState - 1))
+            api?.scrollPrev()
+          }}
+          className={'left-[-50px] h-[50px] w-[50px]'}
+        />
+        <CarouselNext
+          onClick={() => {
+            setActiveIndex(prevState => (prevState == carouselItems.length - 1 ? 0 : prevState + 1))
+            api?.scrollNext()
+          }}
+          className={'right-[-50px] h-[50px] w-[50px]'}
+        />
       </Carousel>
       <div className={'mt-[4em] gap-4 flex-center-box'}>
         {carouselItems.map((_, index) => (
           <div
-            onClick={() => {
-              setActiveIndex(index)
-              api?.scrollTo(index)
-            }}
+            onClick={() => scrollTo(index)}
             key={index}
             className={cn('h-[12px] w-[12px] cursor-pointer rounded-[50%] bg-gray-300', activeIndex == index && 'bg-orange-500')}
           ></div>
