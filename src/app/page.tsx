@@ -5,6 +5,7 @@ import FeatureSection from '@/components/feature-section'
 import LeadingChannel from '@/components/leading-channel'
 import TravelCard from '@/components/travel-card'
 import CarouselSection from '@/components/carousel-section'
+import FooterSection from '@/components/footer-section'
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
       <LeadingChannel></LeadingChannel>
       <TravelCard></TravelCard>
       <CarouselSection></CarouselSection>
+      <FooterSection></FooterSection>
     </div>
   )
 }
