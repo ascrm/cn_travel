@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import React from 'react'
 
-export default function UserInfoItem({ children }: { children?: React.ReactNode }) {
+export default function UserOptionItem({ children }: { children?: React.ReactNode }) {
   return (
     <Button
       sx={{

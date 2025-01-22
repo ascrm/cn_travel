@@ -1,6 +1,6 @@
 /** @format */
 
-import UserInfo from '@/components/header-navbar/user-info'
+import UserOption from '@/components/header-navbar/user-option'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 export default function UserAvatar() {
@@ -11,7 +11,7 @@ export default function UserAvatar() {
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
 
-      <UserInfo></UserInfo>
+      <UserOption></UserOption>
     </div>
   )
 }

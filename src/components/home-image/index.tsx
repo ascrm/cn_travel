@@ -8,7 +8,6 @@ export default function HomeImage() {
       <div className={'absolute left-[15%] top-[50px] w-[400px] rounded-lg bg-white px-[30px] py-[50px]'}>
         <TextField className={'w-[100%]'} label={'起点'} variant={'outlined'}></TextField>
         <TextField sx={{ marginTop: '20px' }} className={'w-[100%]'} label={'终点'} variant={'outlined'}></TextField>
-
         <TextField sx={{ marginTop: '20px' }} className={'w-[100%]'} label={'出发'} variant={'outlined'}></TextField>
         <TextField sx={{ marginTop: '20px' }} className={'w-[100%]'} label={'返回'} variant={'outlined'}></TextField>
 
