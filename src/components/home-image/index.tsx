@@ -4,7 +4,7 @@ import { Button, TextField } from '@mui/material'
 
 export default function HomeImage() {
   return (
-    <div className={"relative h-[650px] bg-black bg-opacity-30 bg-[url('/carousel.jpg')] bg-cover bg-center bg-blend-multiply"}>
+    <div className={"relative h-[650px] bg-black bg-opacity-30 bg-[url('/home.jpg')] bg-cover bg-center bg-blend-multiply"}>
       <div className={'absolute left-[15%] top-[50px] w-[400px] rounded-lg bg-white px-[30px] py-[50px]'}>
         <TextField className={'w-[100%]'} label={'起点'} variant={'outlined'}></TextField>
         <TextField sx={{ marginTop: '20px' }} className={'w-[100%]'} label={'终点'} variant={'outlined'}></TextField>
