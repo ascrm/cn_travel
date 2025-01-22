@@ -14,7 +14,6 @@ export default function HeaderNavbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 判断滚动的距离
       if (window.scrollY > 1) {
         setScrolled(true) // 滚动超过 50px 改变样式
       } else {

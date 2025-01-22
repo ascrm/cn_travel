@@ -3,7 +3,6 @@
 import React from 'react'
 import { BillIcon, DateIcon, LocationIcon } from '@/components/icon'
 import CardInfoItem from '@/components/travel-card/card-info-item'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
@@ -20,10 +19,10 @@ interface CardItemProps {
   }
 }
 
-export default function CardItem({ cardItem, className }: CardItemProps) {
+export default function CardItem({ cardItem }: CardItemProps) {
   return (
     <div>
-      <div className={'group relative aspect-[4/3] w-[400px]'}>
+      <div className={'group relative aspect-[4/3] w-[364px]'}>
         <Image
           className={'absolute cursor-pointer rounded-t-lg transition-cartoon group-hover:brightness-75'}
           src={cardItem.image}
