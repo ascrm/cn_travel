@@ -4,7 +4,7 @@
 import '@splidejs/splide/dist/css/splide.min.css'
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import CarouselSectionItem from '@/components/carousel-section/carousel-section-item'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import * as React from 'react'
 
@@ -34,11 +34,9 @@ const carouselItems = [
 ]
 
 export default function CarouselSection() {
-  // const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }))
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [api, setApi] = useState<CarouselApi>()
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-  const [canScrollNext, setCanScrollNext] = React.useState(false)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
   const scrollTo = (index: number) => {
     setActiveIndex(index)
@@ -47,7 +45,7 @@ export default function CarouselSection() {
 
   return (
     <div className={'my-[200px] bg-orange-50 py-[5em]'}>
-      <Carousel setApi={setApi} opts={{ loop: true }} className="mx-auto w-[70%]">
+      <Carousel ref={carouselRef} setApi={setApi} opts={{ loop: true }} className="mx-auto w-[70%]">
         <CarouselContent>
           {carouselItems.map((item, index) => (
             <CarouselItem key={index} className="w-full">
