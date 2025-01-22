@@ -14,8 +14,8 @@ interface CarouselItemProps {
 
 export default function CarouselSectionItem({ carouselItem }: CarouselItemProps) {
   return (
-    <div className="mx-auto grid w-[70%] grid-cols-1 gap-3.5 py-[5em] lg:grid-cols-2">
-      <div className={'order-2 py-[1em] lg:order-1'}>
+    <div className="mx-auto grid w-[70%] grid-cols-1 gap-3.5 lg:grid-cols-2">
+      <div className={'order-2 cursor-default py-[1em] lg:order-1'}>
         <div className={'text-[1.5rem] text-gray-900'}>{carouselItem.description}</div>
         <div className={'pt-[2em] text-[0.8rem] text-gray-500'}>{carouselItem.author}</div>
       </div>

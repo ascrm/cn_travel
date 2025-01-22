@@ -2,11 +2,11 @@
 'use client'
 
 import '@splidejs/splide/dist/css/splide.min.css'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import useEmblaCarousel from 'embla-carousel-react'
+import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import CarouselSectionItem from '@/components/carousel-section/carousel-section-item'
-
-useEmblaCarousel.globalOptions = { loop: true }
+import Autoplay from 'embla-carousel-autoplay'
+import { useRef, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 const carouselItems = [
   {
@@ -33,12 +33,21 @@ const carouselItems = [
   },
 ]
 
-const CarouselSection = () => {
-  const [emblaRef] = useEmblaCarousel({ align: 'start' })
+export default function CarouselSection() {
+  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }))
+  const [activeIndex, setActiveIndex] = useState<number>(1)
+  const [api, setApi] = useState<CarouselApi>()
 
   return (
-    <div className={'bg-orange-50'}>
-      <Carousel className="mx-auto my-[300px] w-[70%]">
+    <div className={'my-[200px] bg-orange-50 py-[5em]'}>
+      <Carousel
+        onMouseEnter={() => (plugin.current.options.stopOnMouseEnter = true)}
+        onMouseLeave={() => (plugin.current.options.stopOnMouseEnter = false)}
+        plugins={[plugin.current]}
+        setApi={setApi}
+        opts={{ loop: true }}
+        className="mx-auto w-[70%]"
+      >
         <CarouselContent>
           {carouselItems.map((item, index) => (
             <CarouselItem key={index} className="w-full">
@@ -49,8 +58,18 @@ const CarouselSection = () => {
         <CarouselPrevious className={'left-[-50px] h-[50px] w-[50px]'} />
         <CarouselNext className={'right-[-50px] h-[50px] w-[50px]'} />
       </Carousel>
+      <div className={'mt-[4em] gap-4 flex-center-box'}>
+        {carouselItems.map((_, index) => (
+          <div
+            onClick={() => {
+              setActiveIndex(index)
+              api?.scrollTo(index)
+            }}
+            key={index}
+            className={cn('h-[12px] w-[12px] cursor-pointer rounded-[50%] bg-gray-300', activeIndex == index && 'bg-orange-500')}
+          ></div>
+        ))}
+      </div>
     </div>
   )
 }
-
-export default CarouselSection
