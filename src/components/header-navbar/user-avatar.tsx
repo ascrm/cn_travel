@@ -1,16 +1,16 @@
 /** @format */
 
 import UserInfo from '@/components/header-navbar/user-info'
-import { Avatar } from '@mui/material'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 export default function UserAvatar() {
   return (
     <div className="group relative">
-      <Avatar
-        className="z-20 w-[2em] cursor-pointer transition-cartoon group-hover:origin-top group-hover:translate-x-[-20px] group-hover:translate-y-[10px] group-hover:scale-[2.5]"
-        alt="Remy Sharp"
-        src="/avatar.jpg"
-      />
+      <Avatar className="z-20 h-[3em] w-[3em] cursor-pointer transition-cartoon group-hover:origin-top group-hover:translate-x-[-20px] group-hover:translate-y-[10px] group-hover:scale-[2.5]">
+        <AvatarImage src="/avatar.jpg" alt="ASCRM" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+
       <UserInfo></UserInfo>
     </div>
   )
